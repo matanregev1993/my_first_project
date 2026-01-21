@@ -10,7 +10,12 @@ with sync_playwright() as playwright:
     password.fill("secret_sauce")
     login_button = page.locator("[name='login-button']")
     login_button.click()
-
+    url = page.url
+    print(f"url: {url}")
+    if url == "https://www.saucedemo.com/":
+        print("####test pass####")
+    else:
+        print("####test fail####")
     page.close()
     browser.close()
     print ("Test end****")
