@@ -1,3 +1,5 @@
+import time
+
 from playwright.sync_api import sync_playwright
 
 with sync_playwright() as playwright:
@@ -10,9 +12,10 @@ with sync_playwright() as playwright:
     password.fill("secret_sauce")
     login_button = page.locator("[name='login-button']")
     login_button.click()
+    time.sleep(3)
     url = page.url
     print(f"url: {url}")
-    if url == "https://www.saucedemo.com/":
+    if url == "https://www.saucedemo.com/inventory.html":
         print("####test pass####")
     else:
         print("####test fail####")
