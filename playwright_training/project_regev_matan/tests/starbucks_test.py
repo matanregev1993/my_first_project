@@ -23,7 +23,6 @@ class TestStarbucks:
         reward = RewardPage()
         main = MainPage()
         main.main_page(page)
-        reward.reward_page(page)
         reward.reward_nav(page)
         reward.reward_stars(page)
         reward.reward_slide(page)
