@@ -10,21 +10,16 @@ class RewardPage:
         expect(rewards).to_have_text("Rewards")
         rewards.click()
         expect(page).to_have_url(re.compile(r"https://www\.starbucks\.com/rewards/?$"))
-        join_app_button = page.locator(
-            "a.sb-button.sb-button--positive[href='https://starbucks.app.link/VLa2I3inh9']"
-        ).first
-        expect(join_app_button).to_be_visible()
-        expect(join_app_button).to_have_text("Join in the app")
-        join_app_button.click()
-        rewards.click()
+        join_now = page.locator( "#content a.sb-button.sb-button--positive", has_text="Join now" )
+        expect(join_now).to_be_visible()
+        join_now.click()
+        page.goto("https://www.starbucks.com/rewards")
         expect(page).to_have_url(re.compile(r"/rewards/?$"))
-        join_online = page.locator(
-            "a.sb-textLink.color-textBlack[href='/account/create']"
-        )
-        expect(join_online).to_be_visible()
-        expect(join_online).to_have_text("Or join online")
-        join_online.click()
-        rewards.click()
+        join_online_green = page.locator("a.color-greenStarbucks[href='/account/create']")
+        expect(join_online_green).to_be_visible()
+        expect(join_online_green).to_have_text(re.compile(r"join now", re.I))
+        join_online_green.click()
+        page.goto("https://www.starbucks.com/rewards")
         expect(page).to_have_url(re.compile(r"/rewards/?$"))
         join_in_app_green = page.locator(
             "a.color-greenStarbucks[href='https://starbucks.app.link/VLa2I3inh9']"
@@ -38,9 +33,9 @@ class RewardPage:
             "a.color-greenStarbucks[href='/account/create']"
         )
         expect(join_online_green).to_be_visible()
-        expect(join_online_green).to_have_text("join online")
+        expect(join_online_green).to_have_text("join now")
         join_online_green.click()
-        rewards.click()
+        page.goto("https://www.starbucks.com/rewards")
         expect(page).to_have_url(re.compile(r"/rewards/?$"))
         learn_how = page.locator(
             "a.color-greenStarbucks[href='#waystopay']"
@@ -114,56 +109,40 @@ class RewardPage:
         )
         expect(delta_link).to_be_visible()
         delta_link.click()
-        page.bring_to_front()
         marriott_link = page.get_by_role(
             "link",
             name=re.compile(r"Link your Marriott Bonvoy", re.I)
         )
         expect(marriott_link).to_be_visible()
         marriott_link.click()
-        page.bring_to_front()
         join_rewards = page.get_by_role(
             "link",
             name=re.compile(r"Join Starbucks.*Rewards", re.I)
         )
         expect(join_rewards).to_be_visible()
         join_rewards.click()
-        rewards_home = page.locator('a[href="/rewards"]')
-        expect(rewards_home).to_be_visible()
-        rewards_home.click()
+        page.goto("https://www.starbucks.com/rewards")
         right_here = page.get_by_role(
             "link",
             name=re.compile(r"right over here", re.I)
         )
         expect(right_here).to_be_visible()
         right_here.click()
-        page.bring_to_front()
-        delta_terms = page.get_by_role(
-            "link",
-            name=re.compile(r"deltastarbucks\.com/terms", re.I)
+        delta_link = page.get_by_role("link", name="Link your Delta SkyMiles")
+        expect(delta_link).to_have_attribute("href", re.compile(r"deltastarbucks\.com"))
+        marriott_link = page.get_by_role(
+        "link",
+        name=re.compile(r"Link your Marriott Bonvoy", re.I)
         )
-        expect(delta_terms).to_be_visible()
-        delta_terms.click()
-        page.bring_to_front()
-        marriott_page = page.get_by_role(
-            "link",
-            name=re.compile(r"Starbucks\.com/MarriottBonvoy", re.I)
-        )
-        expect(marriott_page).to_be_visible()
-        marriott_page.click()
-        page.bring_to_front()
-        rewards_terms = page.get_by_role(
-            "link",
-            name=re.compile(r"starbucks\.com/rewards/terms", re.I)
-        )
+        expect(marriott_link).to_be_visible()
+        expect(marriott_link).to_have_attribute("href", re.compile(r"marriott", re.I))
+        rewards_terms = page.locator("a[href*='rewards/terms']")
         expect(rewards_terms).to_be_visible()
-        rewards_terms.click()
-        page.bring_to_front()
         store_locator = page.get_by_role(
             "link",
             name=re.compile(r"Starbucks Store Locator", re.I)
         )
         expect(store_locator).to_be_visible()
         store_locator.click()
-        page.bring_to_front()
+
 

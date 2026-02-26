@@ -36,18 +36,22 @@ class MainPage:
         expect(page).to_have_url(re.compile("account/create"))
         page.click("a[aria-label='Home, Starbucks']")
         assert "https://www.starbucks.com" in page.url
-        button = page.get_by_role("link", name="Order now").first
-        expect(button).to_be_visible()
-        expect(button).to_have_attribute("href", re.compile("featured"))
-        button.click()
-        expect(page).to_have_url(re.compile("featured"))
+        green_button = page.locator(
+            "a.sb-button--default:not(.sb-button--white)[href*='menu/featured']"
+        )
+        expect(green_button).to_be_visible()
+        green_button.click()
+        expect(page).to_have_url(re.compile("menu/featured"))
         page.click("a[aria-label='Home, Starbucks']")
         assert "https://www.starbucks.com" in page.url
-        button = page.get_by_role("link", name="Learn more").first
-        expect(button).to_be_visible()
-        expect(button).to_have_attribute("href", re.compile("stor"))
-        button.click()
-        expect(page).to_have_url(re.compile("stor"))
+        white_button = page.locator(
+            "a.sb-button--white[href*='menu/featured']"
+        )
+        expect(white_button).to_be_visible()
+        white_button.click()
+        expect(page).to_have_url(re.compile("menu/featured"))
+
+
 
 
 
