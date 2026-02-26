@@ -6,7 +6,6 @@ from playwright_training.project_regev_matan.pages.search_page import SearchPage
 
 # tests/starbucks_test.py
 
-class TestStarbucks:
 
     def test_menu_page (self, setup_playwright_project):
         page = setup_playwright_project
