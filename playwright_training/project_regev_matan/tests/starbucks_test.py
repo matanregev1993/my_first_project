@@ -4,8 +4,6 @@ from playwright_training.project_regev_matan.pages.menu_page import MenuPage
 from playwright_training.project_regev_matan.pages.reward_page import RewardPage
 from playwright_training.project_regev_matan.pages.search_page import SearchPage
 
-# tests/starbucks_test.py
-
 class TestStarbucks:
 
     def test_menu_page (self, setup_playwright_project):

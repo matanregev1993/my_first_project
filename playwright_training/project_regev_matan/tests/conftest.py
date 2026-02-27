@@ -6,7 +6,7 @@ def setup_playwright_project():
     print("Starting Playwright...")
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=False)
-        context = browser.new_context()  # חשוב!
+        context = browser.new_context()
         page = context.new_page()
         yield page
         page.close()
