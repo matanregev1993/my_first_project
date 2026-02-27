@@ -144,5 +144,3 @@ class RewardPage:
         )
         expect(store_locator).to_be_visible()
         store_locator.click()
-
-

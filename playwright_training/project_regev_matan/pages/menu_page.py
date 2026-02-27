@@ -1,4 +1,3 @@
-
 import re
 from playwright.sync_api import expect
 class MenuPage:
@@ -71,6 +70,3 @@ class MenuPage:
         expect(favorites).to_have_text("Favorites")
         favorites.click()
         expect(page).to_have_url("https://www.starbucks.com/menu/favorites")
-
-
-

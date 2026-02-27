@@ -1,11 +1,12 @@
 from playwright_training.project_regev_matan.pages.gift_card_page import GiftCardPage
 from playwright_training.project_regev_matan.pages.main_page import MainPage
-from playwright_training.project_regev_matan.pages.main_menu import MenuPage
+from playwright_training.project_regev_matan.pages.menu_page import MenuPage
 from playwright_training.project_regev_matan.pages.reward_page import RewardPage
 from playwright_training.project_regev_matan.pages.search_page import SearchPage
 
 # tests/starbucks_test.py
 
+class TestStarbucks:
 
     def test_menu_page (self, setup_playwright_project):
         page = setup_playwright_project
@@ -54,13 +55,3 @@ from playwright_training.project_regev_matan.pages.search_page import SearchPage
         search.search_delivery(page)
         search.search_links(page)
         main.come_home(page)
-
-
-
-
-
-
-
-
-
-

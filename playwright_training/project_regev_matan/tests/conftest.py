@@ -14,4 +14,3 @@ def setup_playwright_project():
         browser.close()
         print("### Test session ended ###")
         print("####Test end###")
-

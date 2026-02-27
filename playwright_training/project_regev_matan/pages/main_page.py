@@ -1,5 +1,3 @@
-
-
 import re
 from playwright.sync_api import expect
 class MainPage:
@@ -50,10 +48,3 @@ class MainPage:
         expect(white_button).to_be_visible()
         white_button.click()
         expect(page).to_have_url(re.compile("menu/featured"))
-
-
-
-
-
-
-

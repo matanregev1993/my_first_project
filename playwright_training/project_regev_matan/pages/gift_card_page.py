@@ -1,4 +1,3 @@
-
 import re
 from playwright.sync_api import expect
 class GiftCardPage:
@@ -100,11 +99,3 @@ class GiftCardPage:
         expect(faqs).to_have_text(re.compile("Card FAQs"))
         faqs.click()
         page.bring_to_front()
-
-
-
-
-
-
-
-

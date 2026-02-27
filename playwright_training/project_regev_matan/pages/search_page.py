@@ -59,5 +59,3 @@ class SearchPage:
         new_tab = new_tab_info.value
         expect(new_tab).to_have_url(re.compile("personal-information"))
         new_tab.close()
-
-
